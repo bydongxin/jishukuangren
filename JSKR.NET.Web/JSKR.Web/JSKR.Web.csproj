@@ -150,7 +150,7 @@
     <Folder Include="Content\" />
     <Folder Include="fonts\" />
     <Folder Include="Models\" />
-    <Folder Include="scripts\" />
+    <Folder Include="Scripts\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
