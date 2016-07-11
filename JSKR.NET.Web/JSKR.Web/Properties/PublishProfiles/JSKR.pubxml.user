@@ -16,7 +16,7 @@
       <publishTime>06/30/2016 23:21:00</publishTime>
     </File>
     <File Include="bin/JSKR.Web.dll">
-      <publishTime>07/02/2016 10:34:06</publishTime>
+      <publishTime>07/11/2016 23:26:39</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.Agent.Intercept.dll">
       <publishTime>06/30/2016 23:21:00</publishTime>
@@ -99,6 +99,9 @@
     <File Include="bin/System.Web.Webpages.Razor.dll">
       <publishTime>06/30/2016 23:21:01</publishTime>
     </File>
+    <File Include="Content/DefaultStyleSheet.css">
+      <publishTime>07/11/2016 22:42:28</publishTime>
+    </File>
     <File Include="Global.asax">
       <publishTime>06/30/2016 23:21:00</publishTime>
     </File>
@@ -106,10 +109,10 @@
       <publishTime>06/30/2016 23:21:00</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>07/02/2016 10:03:29</publishTime>
+      <publishTime>07/11/2016 23:25:49</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>07/02/2016 10:27:15</publishTime>
+      <publishTime>07/11/2016 22:42:48</publishTime>
     </File>
     <File Include="Views/web.config">
       <publishTime>06/30/2016 23:21:00</publishTime>
