@@ -13,9 +13,30 @@
     <![endif]-->
 </head>
 <body>
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Technology Madman</a>
+            </div>
+            <div>
+                <ul class="nav navbar-nav">
+                    <li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Java", "Index", "Java")</li>
+                    <li>@Html.ActionLink("PHP", "Index", "PHP")</li>
+                    <li>@Html.ActionLink("C#", "Index", "CSharp")</li>
+                    <li>@Html.ActionLink("Redis", "Index", "Redis")</li>
+                    <li>@Html.ActionLink("Lucene", "Index", "Lucene")</li>
+                    <li>@Html.ActionLink("Linux", "Index", "Linux")</li>
+                    <li>@Html.ActionLink("Windows", "Index", "Windows")</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     @RenderBody()
+    @Html.Hidden("hidCName", ViewContext.RouteData.Values["controller"].ToString())
     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
     <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/CommonScript.js"></script>
 </body>
 </html>
 

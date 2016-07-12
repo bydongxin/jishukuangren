@@ -119,11 +119,19 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Content\DefaultStyleSheet.css" />
+    <Content Include="Scripts\CommonScript.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CSharpController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JavaController.cs" />
+    <Compile Include="Controllers\LinuxController.cs" />
+    <Compile Include="Controllers\LuceneController.cs" />
+    <Compile Include="Controllers\PHPController.cs" />
+    <Compile Include="Controllers\RedisController.cs" />
+    <Compile Include="Controllers\WindowsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -139,6 +147,13 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <None Include="Properties\PublishProfiles\JSKR.pubxml" />
+    <Content Include="Views\CSharp\Index.cshtml" />
+    <Content Include="Views\Java\Index.cshtml" />
+    <Content Include="Views\Linux\Index.cshtml" />
+    <Content Include="Views\Lucene\Index.cshtml" />
+    <Content Include="Views\PHP\Index.cshtml" />
+    <Content Include="Views\Redis\Index.cshtml" />
+    <Content Include="Views\Windows\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -149,7 +164,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Scripts\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
