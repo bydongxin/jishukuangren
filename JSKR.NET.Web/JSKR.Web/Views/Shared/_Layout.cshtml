@@ -1,9 +1,9 @@
 ﻿<!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@ViewBag.Title</title>
     <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
     <link href="~/Content/DefaultStyleSheet.css" rel="stylesheet" />
@@ -13,14 +13,14 @@
     <![endif]-->
 </head>
 <body>
-    <nav class="navbar navbar-default" role="navigation">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand" href="/">Technology Madman</a>
             </div>
             <div>
                 <ul class="nav navbar-nav">
-                    <li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Java", "Index", "Java")</li>
                     <li>@Html.ActionLink("PHP", "Index", "PHP")</li>
                     <li>@Html.ActionLink("C#", "Index", "CSharp")</li>
@@ -34,6 +34,7 @@
     </nav>
     @RenderBody()
     @Html.Hidden("hidCName", ViewContext.RouteData.Values["controller"].ToString())
+     
     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
     <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
     <script src="~/Scripts/CommonScript.js"></script>
