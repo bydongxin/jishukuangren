@@ -34,12 +34,21 @@
     </nav>
     @RenderBody()
     @Html.Hidden("hidCName", ViewContext.RouteData.Values["controller"].ToString())
-     
+    <footer class="footer">
+        <div class="container">
+            <p>© 2010-2016 jishukuangren.com 版权所有  互联网违法和不良信息举报中心:12377 wdxchn@163.com</p>
+            <p>
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">京ICP备16032941号-1</a>
+                <script type="text/javascript">
+                    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+                    document.write(unescape("%3Cspan id='cnzz_stat_icon_1259910976'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1259910976%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+                </script> <a target="_blank" href="http://www.pingpinganan.gov.cn/?spm=a21bo.50862.1997523009.42.LfGEe9" style="width: 36px;height: 36px;background-image: url(//img.alicdn.com/tps/i1/T1FeW3XXNfXXXXXXXX-36-36.gif);display: inline-block;vertical-align: bottom;"></a>
+            </p>
+             
+        </div>
+    </footer>
     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
     <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
     <script src="~/Scripts/CommonScript.js"></script>
 </body>
 </html>
-
-
-

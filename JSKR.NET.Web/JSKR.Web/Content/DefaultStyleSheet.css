@@ -1,3 +1,10 @@
-﻿.con {
-    font-family: arial;
-}
+﻿.con { font-family: arial; }
+html { position: relative; min-height: 100%; }
+body > .container { padding: 60px 15px 0; }
+.footer { position: absolute; bottom: 0; width: 100%; padding: 40px 0; color: #999; text-align: center; background-color: #f9f9f9; border-top: 1px solid #e5e5e5; }
+    .footer a { color: #777; }
+    .footer p { color: #777; }
+a:link { text-decoration: none; }
+a:visited { text-decoration: none; }
+a:hover { text-decoration: none; }
+a:active { text-decoration: none; }
