@@ -118,7 +118,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="Content\DefaultStyleSheet.css" />
+    <Content Include="Content\CSS\DefaultStyleSheet.css" />
     <Content Include="Scripts\CommonScript.js" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -163,6 +163,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\IMG\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
