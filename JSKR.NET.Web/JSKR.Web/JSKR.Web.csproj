@@ -117,6 +117,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\CSS\iconfont\iconfont.css" />
+    <Content Include="Content\CSS\iconfont\iconfont.svg" />
+    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\CSS\DefaultStyleSheet.css" />
     <Content Include="Scripts\CommonScript.js" />
@@ -146,6 +149,9 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Content\CSS\iconfont\iconfont.eot" />
+    <Content Include="Content\CSS\iconfont\iconfont.ttf" />
+    <Content Include="Content\CSS\iconfont\iconfont.woff" />
     <None Include="Properties\PublishProfiles\JSKR.pubxml" />
     <Content Include="Views\CSharp\Index.cshtml" />
     <Content Include="Views\Java\Index.cshtml" />

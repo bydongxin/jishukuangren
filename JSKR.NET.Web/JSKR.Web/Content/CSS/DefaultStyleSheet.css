@@ -1,7 +1,12 @@
 ﻿.con { font-family: arial; }
 html { position: relative; min-height: 100%; }
 body { padding-top: 50px; padding-bottom: 20px;font-family: tahoma, arial, 'Hiragino Sans GB', 宋体, sans-serif; }
-body > .container { padding: 60px 15px 0; }
+body > .container { padding: 60px 15px 0;  }
+.text-shadow {
+    -ms-text-shadow: 0px 0px 4px rgba(192,192,192,.7);
+    text-shadow: 0px 0px 4px rgba(192,192,192,.7);
+}
+
 .footer { position: absolute; bottom: 0; width: 100%; padding: 40px 0; color: #999; text-align: center; background-color: #f9f9f9; border-top: 1px solid #e5e5e5; }
 .footer a { color: #777; }
 .footer p { color: #777; }
@@ -9,3 +14,5 @@ a:link { text-decoration: none; }
 a:visited { text-decoration: none; }
 a:hover { text-decoration: none; }
 a:active { text-decoration: none; }
+
+ 

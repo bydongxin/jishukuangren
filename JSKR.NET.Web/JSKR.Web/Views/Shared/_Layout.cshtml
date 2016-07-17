@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@ViewBag.Title</title>
     <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link href="~/Content/CSS/iconfont/iconfont.css" rel="stylesheet" />
     <link href="~/Content/CSS/DefaultStyleSheet.css" rel="stylesheet" />
     <!--[if lt IE9]>
         <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -13,29 +14,40 @@
     <![endif]-->
 </head>
 <body>
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/">Technology Madman</a>
-            </div>
-            <div>
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Java", "Index", "Java")</li>
-                    <li>@Html.ActionLink("PHP", "Index", "PHP")</li>
-                    <li>@Html.ActionLink("C#", "Index", "CSharp")</li>
-                    <li>@Html.ActionLink("Redis", "Index", "Redis")</li>
-                    <li>@Html.ActionLink("Lucene", "Index", "Lucene")</li>
-                    <li>@Html.ActionLink("Linux", "Index", "Linux")</li>
-                    <li>@Html.ActionLink("Windows", "Index", "Windows")</li>
-                </ul>
-            </div>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container text-shadow">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Technology Madman</a>
         </div>
-    </nav>
+        <div>
+            <ul class="nav navbar-nav">
+                <li><a href="/Home"><i class="iconfont">&#xe603;</i> Home</a></li>
+                <li><a href="/Java"><i class="iconfont">&#xe609;</i> Java</a></li>
+                <li><a href="/PHP"><i class="iconfont">&#xe605;</i> PHP</a></li>
+                <li><a href="/CSharp"><i class="iconfont">&#xe606;</i> C#</a></li>
+                <li><a href="/Redis"><i class="iconfont">&#xe607;</i> Redis</a></li>
+                <li><a href="/Lucene"><i class="iconfont">&#xe601;</i> Lucene</a></li>
+                <li><a href="/Linux"><i class="iconfont">&#xe608;</i> Linux</a></li>
+                <li><a href="/Windows"><i class="iconfont">&#xe602;</i> Windows</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    <div class="jumbotron">
+        <div class="container text-shadow">
+            @RenderSection("Title")
+            <blockquote class="blockquote-reverse" style="margin-top: 100px;">
+                <p>技术狂人，或有所学，或有所用，坚持自己的道路。</p>
+                <p>为了自己的目标，不断的去学习，努力，坚持...</p>
+                <footer><cite title="Source Title">by Wang DingXu</cite></footer>
+            </blockquote>
+        </div>
+    </div>
+    
     @RenderBody()
     @Html.Hidden("hidCName", ViewContext.RouteData.Values["controller"].ToString())
     <footer class="footer">
-        <div class="container">
+        <div class="container text-shadow">
             <p>© 2010-2016 jishukuangren.com 版权所有  互联网违法和不良信息举报中心:12377 wdxchn@163.com</p>
             <p>
                 <a href="http://www.miitbeian.gov.cn/" target="_blank">京ICP备16032941号-1</a>
@@ -44,7 +56,7 @@
                     document.write(unescape("%3Cspan id='cnzz_stat_icon_1259910976'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1259910976%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
                 </script> <a target="_blank" href="http://www.pingpinganan.gov.cn/?spm=a21bo.50862.1997523009.42.LfGEe9" style="width: 36px;height: 36px;background-image: url(//img.alicdn.com/tps/i1/T1FeW3XXNfXXXXXXXX-36-36.gif);display: inline-block;vertical-align: bottom;"></a>
             </p>
-             
+
         </div>
     </footer>
     <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
