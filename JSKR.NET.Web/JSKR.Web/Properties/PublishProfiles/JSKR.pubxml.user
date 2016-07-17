@@ -16,7 +16,7 @@
       <publishTime>06/30/2016 23:21:00</publishTime>
     </File>
     <File Include="bin/JSKR.Web.dll">
-      <publishTime>07/17/2016 11:18:51</publishTime>
+      <publishTime>07/17/2016 23:07:44</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.Agent.Intercept.dll">
       <publishTime>06/30/2016 23:21:00</publishTime>
@@ -103,7 +103,7 @@
       <publishTime>07/16/2016 12:01:31</publishTime>
     </File>
     <File Include="Content/CSS/iconfont/iconfont.css">
-      <publishTime>07/16/2016 12:36:16</publishTime>
+      <publishTime>07/17/2016 23:05:51</publishTime>
     </File>
     <File Include="Content/CSS/iconfont/iconfont.eot">
       <publishTime>07/16/2016 12:01:26</publishTime>
@@ -147,6 +147,9 @@
     <File Include="Views/Lucene/Index.cshtml">
       <publishTime>07/17/2016 11:14:30</publishTime>
     </File>
+    <File Include="Views/Nginx/Index.cshtml">
+      <publishTime>07/17/2016 22:08:27</publishTime>
+    </File>
     <File Include="Views/PHP/Index.cshtml">
       <publishTime>07/17/2016 11:15:24</publishTime>
     </File>
@@ -154,13 +157,13 @@
       <publishTime>07/17/2016 11:12:53</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>07/17/2016 11:11:39</publishTime>
+      <publishTime>07/17/2016 23:05:19</publishTime>
     </File>
     <File Include="Views/web.config">
       <publishTime>06/30/2016 23:21:00</publishTime>
     </File>
     <File Include="Views/Windows/Index.cshtml">
-      <publishTime>07/17/2016 11:16:47</publishTime>
+      <publishTime>07/17/2016 16:24:24</publishTime>
     </File>
     <File Include="Views/_ViewStart.cshtml">
       <publishTime>06/30/2016 23:21:00</publishTime>
