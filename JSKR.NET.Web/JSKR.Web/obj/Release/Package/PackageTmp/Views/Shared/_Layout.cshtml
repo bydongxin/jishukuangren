@@ -14,25 +14,36 @@
     <![endif]-->
 </head>
 <body>
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container text-shadow">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/">Technology Madman</a>
-            </div>
-            <div>
-                <ul class="nav navbar-nav">
-                    <li><a href="/Home"><i class="iconfont">&#xe603;</i> Home</a></li>
-                    <li><a href="/Java"><i class="iconfont">&#xe609;</i> Java</a></li>
-                    <li><a href="/PHP"><i class="iconfont">&#xe605;</i> PHP</a></li>
-                    <li><a href="/CSharp"><i class="iconfont">&#xe606;</i> C#</a></li>
-                    <li><a href="/Redis"><i class="iconfont">&#xe607;</i> Redis</a></li>
-                    <li><a href="/Lucene"><i class="iconfont">&#xe601;</i> Lucene</a></li>
-                    <li><a href="/Linux"><i class="iconfont">&#xe608;</i> Linux</a></li>
-                    <li><a href="/Windows"><i class="iconfont">&#xe602;</i> Windows</a></li>
-                </ul>
-            </div>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container text-shadow">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Technology Madman</a>
         </div>
-    </nav>
+        <div>
+            <ul class="nav navbar-nav">
+                <li><a href="/Home"><i class="iconfont">&#xe603;</i> Home</a></li>
+                <li><a href="/Java"><i class="iconfont">&#xe609;</i> Java</a></li>
+                <li><a href="/PHP"><i class="iconfont">&#xe605;</i> PHP</a></li>
+                <li><a href="/CSharp"><i class="iconfont">&#xe606;</i> C#</a></li>
+                <li><a href="/Redis"><i class="iconfont">&#xe607;</i> Redis</a></li>
+                <li><a href="/Lucene"><i class="iconfont">&#xe601;</i> Lucene</a></li>
+                <li><a href="/Linux"><i class="iconfont">&#xe608;</i> Linux</a></li>
+                <li><a href="/Windows"><i class="iconfont">&#xe602;</i> Windows</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    <div class="jumbotron">
+        <div class="container text-shadow">
+            @RenderSection("Title")
+            <blockquote class="blockquote-reverse" style="margin-top: 100px;">
+                <p>技术狂人，或有所学，或有所用，坚持自己的道路。</p>
+                <p>为了自己的目标，不断的去学习，努力，坚持...</p>
+                <footer><cite title="Source Title">by Wang DingXu</cite></footer>
+            </blockquote>
+        </div>
+    </div>
+    
     @RenderBody()
     @Html.Hidden("hidCName", ViewContext.RouteData.Values["controller"].ToString())
     <footer class="footer">
