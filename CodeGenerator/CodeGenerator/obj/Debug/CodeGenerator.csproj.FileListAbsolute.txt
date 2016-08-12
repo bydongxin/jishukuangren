@@ -1,0 +1,9 @@
+D:\Projects\CodeGenerator\CodeGenerator\bin\Debug\CodeGenerator.exe.config
+D:\Projects\CodeGenerator\CodeGenerator\bin\Debug\CodeGenerator.exe
+D:\Projects\CodeGenerator\CodeGenerator\bin\Debug\CodeGenerator.pdb
+D:\Projects\CodeGenerator\CodeGenerator\obj\Debug\CodeGenerator.csprojResolveAssemblyReference.cache
+D:\Projects\CodeGenerator\CodeGenerator\obj\Debug\CodeGenerator.Form1.resources
+D:\Projects\CodeGenerator\CodeGenerator\obj\Debug\CodeGenerator.Properties.Resources.resources
+D:\Projects\CodeGenerator\CodeGenerator\obj\Debug\CodeGenerator.csproj.GenerateResource.Cache
+D:\Projects\CodeGenerator\CodeGenerator\obj\Debug\CodeGenerator.exe
+D:\Projects\CodeGenerator\CodeGenerator\obj\Debug\CodeGenerator.pdb
