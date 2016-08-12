@@ -1,0 +1,217 @@
+
+
+<!DOCTYPE html>
+<html>
+<head><link rel="Shortcut Icon" href="https://buy.wosign.com/images/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="/css/oneclick/reset.css" />
+    <link rel="stylesheet" type="text/css" href="/css/oneclick/userCenter.css?1001005" />
+    <link href="/css/oneclick/css.css" rel="stylesheet" type="text/css" />
+
+    <script src="/js/jquery-1.8.3.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="/config/zh-cn.js?v=2015223"></script>
+
+    <script type="text/javascript">
+       function SetStep(index) {
+
+            var stepCount = 7;
+
+            for (var i = 1; i <= stepCount; i++) {
+
+                var loopStepObj = document.getElementById('Step' + i);
+
+                if (loopStepObj != undefined && loopStepObj != null) {
+
+                    if (i <= index) {
+
+                        loopStepObj.className = "xuanzhong";
+
+                    }
+                    else {
+
+                        loopStepObj.className = "";
+
+                    }
+
+                }
+                else {
+                    loopStepObj = document.getElementById('ctl00_ContentPlaceHolder1_Step' + i);
+
+                    if (loopStepObj != undefined && loopStepObj != null) {
+
+                        if (i <= index) {
+
+                            loopStepObj.className = "xuanzhong";
+
+                        }
+                        else {
+
+                            loopStepObj.className = "";
+
+                        }
+
+                    }
+                }
+
+            }
+        }
+
+        window.onload = function() {
+            SetStep(7);
+            CustomerEvaluation();
+        }
+
+        function addMsg() {
+
+            alert(CertDownMsg);
+            return true;
+        }
+
+        function CustomerSub() {
+            var Fraction = 0;
+            $("input:radio[name='Evaluation']:checked").each(function() {
+                Fraction = this.value;
+            });
+            if (Fraction == 0) {
+                alert("请选择我的评分");
+                return;
+            }
+            else {
+                if (Fraction <= 2 && $.trim($("#txtContent").val()) == "") {
+                    alert("请填写评价内容");
+                    return;
+                }
+
+            }
+            var josnStr = "{\"vFraction\":\"" + Fraction + "\" ,\"vCn\":\"" + $("#txtContent").val() + "\"}";
+            $.ajax({
+                type: "Post",
+                url: "/GetCertificate/AutoGetCert.aspx/CustomerSum",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: josnStr,
+                success: function(data) {
+                    alert(data.d);
+                    $("#Customer").hide();
+                    $("#CustomerContent").hide();
+                },
+                error: function(err) {
+                    alert(err);
+                }
+            });
+        }
+
+        function CustomerEvaluation() {
+            var HtmlContent = "<fieldset width=\"100%\"><legend><span style=\"cursor:pointer\" id=\"Customer\" onclick=\"CustomerEvaluation()\">我的评价</span></legend>";
+            HtmlContent += "<div style=\"width:88%; margin:0 auto;\">我的评分：<input type=\"radio\" value=\"5\" name=\"Evaluation\" />&nbsp;非常满意&nbsp;&nbsp;&nbsp;";
+            HtmlContent += "<input type=\"radio\" value=\"4\" name=\"Evaluation\" />&nbsp;满意&nbsp;&nbsp;&nbsp;";
+            HtmlContent += "<input type=\"radio\" value=\"3\" name=\"Evaluation\" />&nbsp;一般&nbsp;&nbsp;&nbsp;";
+            HtmlContent += "<input type=\"radio\" value=\"2\" name=\"Evaluation\" />&nbsp;不满意&nbsp;&nbsp;&nbsp;&nbsp;";
+            HtmlContent += "<input type=\"radio\" value=\"1\" name=\"Evaluation\" />&nbsp;非常不满意";
+            HtmlContent += "<div style=\"width:100%; margin-top:8px;\" ><div style=\"float:left;width: 11%;\" >评价内容：</div><div style=\"float:left;width:89%;\"><textarea  rows=\"12\" cols=\"80\" onpropertychange=\"if(value.length>100) value=value.substr(0,100)\"  id=\"txtContent\" style=\"width:500px;\"></textarea></div>";
+            HtmlContent += "<div style=\"clear:both;\" ></div>";
+            HtmlContent += "<div style=\"width:100%; float:none; text-align:center; margin:10px 0 0;\" class=\"subMar\" ><input type=\"button\" onclick=\"CustomerSub()\" value=\"确定\"/></div></div>";
+            HtmlContent += "</div></fieldset>";
+            $("#CustomerContent").html(HtmlContent);
+        }
+        var IsGetCertSuccess = 0;
+        
+        $(function(){
+            try{
+                if(IsGetCertSuccess==1){
+                   parent.setNextShow(4);
+                }else{
+                   parent.setNextShow(3);
+                }
+            }catch(ex){
+            
+            }
+        });
+        
+    </script>
+
+    <style type="text/css">
+        .style1
+        {
+            height: 21px;
+        }
+    </style>
+<title>
+	沃通数字证书在线申请 WoSign数字证书:SSL证书 | 代码签名证书 | EV SSL证书 | OV SSL证书 | DV SSL证书 | 2048位服务器证书,全球通用, 支持所有浏览器和服务器, 全面支持中文和中文域名!
+</title></head>
+<body>
+    <form name="aspnetForm" method="post" action="905E17BV0KAGCL63D24863FA95F5823088E8A061E273A5D48179FB4F817F326176AB11BBB34214145E5B876.html?r=0&amp;isOrderSuccess=0" id="aspnetForm">
+<div>
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="Gaidf9WA4QmkiDkKi9CFvgE2BGuAJVVH3OxLrsrZIu5isobpNajesBu/s9/sofure9Nl4cDwmT6ssqpovAiYBf9iHU0BeW/yFk/E9J+k/hjnv22C/62J3/DMi07QNem2EpgV2qdqeeC8YnZ+4M09tb1UZYmXrqL9xT3ZqIhL4A8BCUlQqiVbfacTy5Z2LPIOcigcFpEgu21hIYdwmKbPqAbE02XlJ/hULPmq3eFjGU165VjKF+GpDhhfXUX8JmMgfCk8Cml3v7f2j9NvpkBvlpEXGsB+dvD4wLUPHna7XWMcEe6qtA2ufU9gyJUjwqS4JaNnTyleEE+mQxoTmHaMV/8siBDkkKATqC4poHwcYEFRDjfKxRboFipQeZfUw0UiL4Hgo0IZD3eGoBsxEh0AFbRtkyFgP3PuTpPzI5+WQMvvEj5MCRSzcnPUa2zPwMXSEEXKb+6kiPYfdSgbI8TnHIRHNvjtFT0m5He5SxGV1R61AlBID3oDSbavm/NLCGaoFdOgr/wlTWnoI6URbq3z6Byuoy6mBL1pimUE8aLN6Q8pq85J3+8jJDCJRapE8CND0cQhjIgYj817IxO2Zn+d9SQaz2bX9t7myNvn8svVDHLnv9itGDaYlKOzMWGDK7g/41yhzGDUyr/ZBfsVopPEnvadHngCpgxWex28g8TavMAxkbjdiaDZBSKU2E1nrH06nE5avsg9tjI2GyQR1SXNjSmuavvLaiiPT8IMg1VVMimVWSQ/NC8jotJMbH4K+JaU04Ga5I3nu3kb/QwHaLMySI4FvZ8/t10B/iX6EK0cPcQHZKDbgoEzepjAXEadLQLR5rSQnV06QdVobpISmU9hcWP2syyId82GO9OvPGjRXEKIYGPF37k3NdmlLQFyHE3/r3UbChJ3NIuj/0TnjMDIhGyHOlRX9hDzNiorGr07Kxv+N1VpdYSPDGgEoLX15mYejHC6mOsIy3q/U0wx/AMB7oIBghK3vp+lKSQb8oX/svNTaIPdw0/LmcF29gHADhgXIv+3Ncxhf7KPv1Gyay63lvBaKydDXP0kqulBaYw0VDeK1wTU9+jbEhCQYIR1/V+3j5ty+tzUfu9IUI+9moSq04EKwLmkb/8aS14t1GSCv4B2jsRA" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<div>
+
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="GZEwD0QiBhMC/5kRd/cJk4jFK9qAOl1o40XdKOHzW1cx2CguUnxT/7PkCN4YCxnBwQnbPRgyZ434CGuchvMQoiwsrvxQo/5xZJIgwdKokvPz3+N1NMpu0geGJ9M=" />
+</div>
+    
+    <div id="Middle_Content">
+        <!-- content start -->
+    
+    <div class="userCenter" style="height: 409px; width: 721px">
+        <div id="content">
+            <div id="ctl00_ContentPlaceHolder1_divGetPfx" class="ucLeft">
+                <div class="ucLeft_con">
+                    <!-- <h2 class="title">
+                        SSL证书</h2> -->
+                    <div class="ucLeftDe">
+                        <div id="ctl00_ContentPlaceHolder1_downLoad" class="sucPage">
+                            <h3 class="tipTit">
+                                <img src="/images/oneclick/sucBig.jpg" /><span id="ctl00_ContentPlaceHolder1_titile">(您申请的WoSignSSL证书已经颁发,请下载相关文件)</span></h3>
+                            <div id="ctl00_ContentPlaceHolder1_emInfomation" class="emInfomation">您的证书已经签发,请下载下面压缩包文件到您的电脑中保存并解压安装<br />如果您已经忘记此密码,则证书无法安装,只能重新申请一张新的证书,系统不保存证书保护密码.<br /></div>
+                            <div>
+                                <span class="downGy">
+                                    <a onclick="return addMsg(); ;" id="ctl00_ContentPlaceHolder1_linkBtnFile" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$linkBtnFile','')" style="font-size: 14px; font-weight: bold; color: #fff;">jishukuangren.com_sha256_cn.zip</a>(点击下载)
+                                </span>
+                                
+                                
+                            </div>
+                            <p class="mt_20">
+                                如果您在安装过程中遇到任何问题,请联系WoSign<a
+                                    href="https://www.wosign.com/contact/index.html" target="_blank" class="orangeW">客服中心</a></p>
+                            </div>
+                        
+                        
+                        
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+        <!-- content end -->
+    </div>  
+    
+
+    <script src="https://api5.wosign.com/10000006.js" type="text/javascript" language="JavaScript"></script>
+
+    </form>
+</body>
+</html>

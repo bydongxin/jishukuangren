@@ -117,8 +117,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\CSS\iconfont\iconfont.css" />
+    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Content\DefaultStyleSheet.css" />
+    <Content Include="Content\CSS\DefaultStyleSheet.css" />
     <Content Include="Scripts\CommonScript.js" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -129,6 +131,7 @@
     <Compile Include="Controllers\JavaController.cs" />
     <Compile Include="Controllers\LinuxController.cs" />
     <Compile Include="Controllers\LuceneController.cs" />
+    <Compile Include="Controllers\NginxController.cs" />
     <Compile Include="Controllers\PHPController.cs" />
     <Compile Include="Controllers\RedisController.cs" />
     <Compile Include="Controllers\WindowsController.cs" />
@@ -154,6 +157,7 @@
     <Content Include="Views\PHP\Index.cshtml" />
     <Content Include="Views\Redis\Index.cshtml" />
     <Content Include="Views\Windows\Index.cshtml" />
+    <Content Include="Views\Nginx\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -163,6 +167,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\IMG\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
