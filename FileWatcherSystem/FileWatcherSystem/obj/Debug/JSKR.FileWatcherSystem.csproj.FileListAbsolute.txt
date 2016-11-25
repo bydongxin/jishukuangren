@@ -1,0 +1,11 @@
+D:\Projects\FileWatcherSystem\FileWatcherSystem\bin\Debug\FileWatcherSystem.exe.config
+D:\Projects\FileWatcherSystem\FileWatcherSystem\bin\Debug\FileWatcherSystem.exe
+D:\Projects\FileWatcherSystem\FileWatcherSystem\bin\Debug\FileWatcherSystem.pdb
+D:\Projects\FileWatcherSystem\FileWatcherSystem\bin\Debug\WatcherHelper.dll
+D:\Projects\FileWatcherSystem\FileWatcherSystem\bin\Debug\WatcherHelper.pdb
+D:\Projects\FileWatcherSystem\FileWatcherSystem\obj\Debug\JSKR.FileWatcherSystem.csprojResolveAssemblyReference.cache
+D:\Projects\FileWatcherSystem\FileWatcherSystem\obj\Debug\FileWatcherSystem.FileWatcherSystem.resources
+D:\Projects\FileWatcherSystem\FileWatcherSystem\obj\Debug\FileWatcherSystem.Properties.Resources.resources
+D:\Projects\FileWatcherSystem\FileWatcherSystem\obj\Debug\JSKR.FileWatcherSystem.csproj.GenerateResource.Cache
+D:\Projects\FileWatcherSystem\FileWatcherSystem\obj\Debug\FileWatcherSystem.exe
+D:\Projects\FileWatcherSystem\FileWatcherSystem\obj\Debug\FileWatcherSystem.pdb
