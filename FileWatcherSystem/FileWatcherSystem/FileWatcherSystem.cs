@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Security.AccessControl;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FileWatcherSystem.Properties;
@@ -17,7 +18,6 @@ namespace FileWatcherSystem
 {
     public partial class FileWatcherSystem : Form
     {
-        readonly MyFileSystemWatcher myWather = new MyFileSystemWatcher(WatcherConfiguration.watcherPath, WatcherConfiguration.watcherFilter);
 
         public FileWatcherSystem()
         {
@@ -26,43 +26,49 @@ namespace FileWatcherSystem
 
         private void FileWatcherSystem_Load(object sender, EventArgs e)
         {
-            myWather.OnChanged += OnChanged;
-            myWather.OnCreated += OnCreated;
-            myWather.OnRenamed += OnRenamed;
-            myWather.OnDeleted += OnDeleted;
-            myWather.Start();
+            WatcherConfigHelper helper = new WatcherConfigHelper();
+            //MyFileSystemWatcher myWather = new MyFileSystemWatcher("", "", "");
+            //myWather.OnChanged += OnChanged;
+            //myWather.OnCreated += OnCreated;
+            //myWather.OnRenamed += OnRenamed;
+            //myWather.OnDeleted += OnDeleted;
+            //myWather.Start();
         }
         private static void OnCreated(object source, FileSystemEventArgs e)
         {
             SyncFile(e);
-            WriteLine("文件新建事件处理逻辑");
+            WriteLine(@"新建事件处理逻辑：" + e.FullPath);
         }
 
         private static void OnChanged(object source, FileSystemEventArgs e)
         {
             SyncFile(e);
-            WriteLine("文件改变事件处理逻辑");
+            WriteLine(@"改变事件处理逻辑：" + e.FullPath);
         }
 
         private static void OnDeleted(object source, FileSystemEventArgs e)
         {
             SyncFile(e);
-            WriteLine("文件删除事件处理逻辑");
+            WriteLine(@"删除事件处理逻辑：" + e.FullPath);
         }
 
         private static void OnRenamed(object source, RenamedEventArgs e)
         {
             SyncFile(e);
-            WriteLine("文件重命名事件处理逻辑");
+            WriteLine(@"重命名事件处理逻辑：" + e.FullPath);
         }
 
 
         /// <summary>
-        /// 同步文件
+        /// 同步
         /// </summary>
         /// <param name="e"></param>
         private static void SyncFile(FileSystemEventArgs e)
         {
+            if (e.Name.Contains("Web.config"))
+            {
+                return;
+            }
             switch (e.ChangeType)
             {
                 case WatcherChangeTypes.Renamed:
@@ -78,8 +84,8 @@ namespace FileWatcherSystem
                         if (!File.Exists(oldFullPath) && File.Exists(newFullPath))
                         {
                             string watcherPath = oldFullPath;
-                            string syncPath = watcherPath.Replace(WatcherConfiguration.watcherPath, WatcherConfiguration.syncPath);
-                            string targetPath = newFullPath.Replace(WatcherConfiguration.watcherPath, WatcherConfiguration.syncPath);
+                            string syncPath = watcherPath.Replace(watcherPath, WatcherConfigHelper.GetSyncPathByWatcherPath(watcherPath));
+                            string targetPath = newFullPath.Replace(watcherPath, WatcherConfigHelper.GetSyncPathByWatcherPath(watcherPath));
                             if (File.Exists(syncPath))
                             {
                                 File.Delete(syncPath);
@@ -90,8 +96,8 @@ namespace FileWatcherSystem
                         else if (!Directory.Exists(oldFullPath) && Directory.Exists(newFullPath))
                         {
                             string watcherPath = oldFullPath;
-                            string syncPath = watcherPath.Replace(WatcherConfiguration.watcherPath, WatcherConfiguration.syncPath);
-                            string targetPath = newFullPath.Replace(WatcherConfiguration.watcherPath, WatcherConfiguration.syncPath);
+                            string syncPath = watcherPath.Replace(watcherPath, WatcherConfigHelper.GetSyncPathByWatcherPath(watcherPath));
+                            string targetPath = newFullPath.Replace(watcherPath, WatcherConfigHelper.GetSyncPathByWatcherPath(watcherPath));
                             if (!Directory.Exists(targetPath))
                             {
                                 CopyUpdateFile(newFullPath, targetPath);
@@ -105,7 +111,7 @@ namespace FileWatcherSystem
                     break;
                 case WatcherChangeTypes.Deleted:
                     string fullPath = e.FullPath;
-                    string targetDeletePath = fullPath.Replace(WatcherConfiguration.watcherPath, WatcherConfiguration.syncPath);
+                    string targetDeletePath = fullPath.Replace(fullPath, WatcherConfigHelper.GetSyncPathByWatcherPath(fullPath));
                     if (File.Exists(targetDeletePath))
                     {
                         File.Delete(targetDeletePath);
@@ -124,13 +130,13 @@ namespace FileWatcherSystem
                         if (File.Exists(path))
                         {
                             string watcherPath = path;
-                            string syncPath = path.Replace(WatcherConfiguration.watcherPath, WatcherConfiguration.syncPath);
+                            string syncPath = path.Replace(watcherPath, WatcherConfigHelper.GetSyncPathByWatcherPath(watcherPath));
                             FileInfo changeFile = new FileInfo(watcherPath);
                             changeFile.CopyTo(syncPath, true);
                         }
                         else if (Directory.Exists(path))
                         {
-                            string targetPath = path.Replace(WatcherConfiguration.watcherPath, WatcherConfiguration.syncPath);
+                            string targetPath = path.Replace(path, WatcherConfigHelper.GetSyncPathByWatcherPath(path));
                             if (!Directory.Exists(targetPath))
                             {
                                 CopyUpdateFile(path, targetPath);
@@ -139,6 +145,7 @@ namespace FileWatcherSystem
                     }
                     catch (Exception)
                     {
+                        Thread.Sleep(1000);
                         goto DEFAULT;
                     }
 

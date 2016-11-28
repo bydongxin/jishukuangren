@@ -8,3 +8,4 @@ D:\jishukuangren\FileWatcherSystem\WatcherHelper\bin\Debug\WatcherHelper.pdb
 D:\jishukuangren\FileWatcherSystem\WatcherHelper\obj\Debug\JSKR.WatcherHelper.csprojResolveAssemblyReference.cache
 D:\jishukuangren\FileWatcherSystem\WatcherHelper\obj\Debug\WatcherHelper.dll
 D:\jishukuangren\FileWatcherSystem\WatcherHelper\obj\Debug\WatcherHelper.pdb
+D:\jishukuangren\FileWatcherSystem\WatcherHelper\bin\Debug\WatcherPathConfig.xml

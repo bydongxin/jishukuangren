@@ -14,10 +14,11 @@ namespace WatcherHelper
 
     public class MyFileSystemWatcher
     {
-
         private readonly FileSystemWatcher fsWather;
         private readonly Hashtable hstbWather;
         public event RenamedEventHandler OnRenamed;
+        public string WatcherPath { get; set; }
+        public string SyncPath { get; set; }
         public event FileSystemEventHandler OnChanged;
         public event FileSystemEventHandler OnCreated;
         public event FileSystemEventHandler OnDeleted;
@@ -25,34 +26,35 @@ namespace WatcherHelper
         /// <summary> 
         /// 构造函数 
         /// </summary> 
-        /// <param name="path">要监控的路径</param>
-        /// <param name="filter"></param> 
-        public MyFileSystemWatcher(string path, string filter)
+        /// <param name="watcherPath">监听路径</param>
+        /// <param name="syncPath">同步路径</param>
+        /// <param name="filter">监听过滤</param>
+        public MyFileSystemWatcher(string watcherPath, string syncPath, string filter)
         {
-            if (!Directory.Exists(path))
+            if (!Directory.Exists(watcherPath))
             {
-                throw new Exception("哟，小伙，这路径找不到呀：" + path);
+                throw new Exception("哟，小伙，这路径找不到呀：" + watcherPath);
             }
 
             hstbWather = new Hashtable();
+            WatcherPath = watcherPath;
+            SyncPath = syncPath;
 
-            fsWather = new FileSystemWatcher(path)
+            fsWather = new FileSystemWatcher(watcherPath)
             {
-                IncludeSubdirectories = true,
-                Filter = filter 
+                IncludeSubdirectories = true,// 是否监控子目录
+                Filter = filter
             };
-            // 是否监控子目录
             fsWather.Renamed += fsWather_Renamed;
             fsWather.Changed += fsWather_Changed;
             fsWather.Created += fsWather_Created;
             fsWather.Deleted += fsWather_Deleted;
+
         }
 
-        /// <summary> 
-        /// 开始监控 
-        /// </summary> 
         public void Start()
-        {
+        { 
+            //开始监控
             fsWather.EnableRaisingEvents = true;
         }
 
@@ -80,14 +82,15 @@ namespace WatcherHelper
             }
 
             WatcherProcess watcherProcess = new WatcherProcess(sender, e);
-            watcherProcess.OnCompleted += new Completed(WatcherProcess_OnCompleted);
-            watcherProcess.OnRenamed += new RenamedEventHandler(WatcherProcess_OnRenamed);
+            watcherProcess.OnCompleted += WatcherProcess_OnCompleted;
+            watcherProcess.OnRenamed += WatcherProcess_OnRenamed;
             Thread thread = new Thread(watcherProcess.Process);
             thread.Start();
         }
 
         private void WatcherProcess_OnRenamed(object sender, RenamedEventArgs e)
         {
+
             OnRenamed?.Invoke(sender, e);
         }
 
@@ -101,8 +104,8 @@ namespace WatcherHelper
                 }
             }
             WatcherProcess watcherProcess = new WatcherProcess(sender, e);
-            watcherProcess.OnCompleted += new Completed(WatcherProcess_OnCompleted);
-            watcherProcess.OnCreated += new FileSystemEventHandler(WatcherProcess_OnCreated);
+            watcherProcess.OnCompleted += WatcherProcess_OnCompleted;
+            watcherProcess.OnCreated += WatcherProcess_OnCreated;
             Thread threadDeal = new Thread(watcherProcess.Process);
             threadDeal.Start();
         }
@@ -122,8 +125,8 @@ namespace WatcherHelper
                 }
             }
             WatcherProcess watcherProcess = new WatcherProcess(sender, e);
-            watcherProcess.OnCompleted += new Completed(WatcherProcess_OnCompleted);
-            watcherProcess.OnDeleted += new FileSystemEventHandler(WatcherProcess_OnDeleted);
+            watcherProcess.OnCompleted += WatcherProcess_OnCompleted;
+            watcherProcess.OnDeleted += WatcherProcess_OnDeleted;
             Thread tdDeal = new Thread(watcherProcess.Process);
             tdDeal.Start();
         }
@@ -155,8 +158,8 @@ namespace WatcherHelper
                 }
             }
             WatcherProcess watcherProcess = new WatcherProcess(sender, e);
-            watcherProcess.OnCompleted += new Completed(WatcherProcess_OnCompleted);
-            watcherProcess.OnChanged += new FileSystemEventHandler(WatcherProcess_OnChanged);
+            watcherProcess.OnCompleted += WatcherProcess_OnCompleted;
+            watcherProcess.OnChanged += WatcherProcess_OnChanged;
             Thread thread = new Thread(watcherProcess.Process);
             thread.Start();
         }
