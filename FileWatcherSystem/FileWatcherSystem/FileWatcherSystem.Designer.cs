@@ -28,34 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnStartWatcher = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // btnStartWatcher
-            // 
-            this.btnStartWatcher.Location = new System.Drawing.Point(99, 188);
-            this.btnStartWatcher.Name = "btnStartWatcher";
-            this.btnStartWatcher.Size = new System.Drawing.Size(75, 23);
-            this.btnStartWatcher.TabIndex = 0;
-            this.btnStartWatcher.Text = "开始监听";
-            this.btnStartWatcher.UseVisualStyleBackColor = true;
-            this.btnStartWatcher.Click += new System.EventHandler(this.btnStartWatcher_Click);
-            // 
-            // Form1
+            // FileWatcherSystem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Controls.Add(this.btnStartWatcher);
-            this.Name = "Form1";
+            this.Name = "FileWatcherSystem";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.FileWatcherSystem_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnStartWatcher;
     }
 }
 

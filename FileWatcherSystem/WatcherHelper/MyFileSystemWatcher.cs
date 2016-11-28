@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -11,12 +12,11 @@ namespace WatcherHelper
 {
     public delegate void Completed(string key);
 
-    public class MyFileSystemWather
+    public class MyFileSystemWatcher
     {
+
         private readonly FileSystemWatcher fsWather;
-
         private readonly Hashtable hstbWather;
-
         public event RenamedEventHandler OnRenamed;
         public event FileSystemEventHandler OnChanged;
         public event FileSystemEventHandler OnCreated;
@@ -27,7 +27,7 @@ namespace WatcherHelper
         /// </summary> 
         /// <param name="path">要监控的路径</param>
         /// <param name="filter"></param> 
-        public MyFileSystemWather(string path, string filter)
+        public MyFileSystemWatcher(string path, string filter)
         {
             if (!Directory.Exists(path))
             {
