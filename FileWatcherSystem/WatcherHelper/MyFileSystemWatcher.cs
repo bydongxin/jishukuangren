@@ -39,7 +39,7 @@ namespace WatcherHelper
             fsWather = new FileSystemWatcher(path)
             {
                 IncludeSubdirectories = true,
-                Filter = filter
+                Filter = filter 
             };
             // 是否监控子目录
             fsWather.Renamed += fsWather_Renamed;
@@ -73,7 +73,10 @@ namespace WatcherHelper
         {
             lock (hstbWather)
             {
-                hstbWather.Add(e.FullPath, e);
+                if (!hstbWather.ContainsKey(e.FullPath))
+                {
+                    hstbWather.Add(e.FullPath, e);
+                }
             }
 
             WatcherProcess watcherProcess = new WatcherProcess(sender, e);
@@ -92,7 +95,10 @@ namespace WatcherHelper
         {
             lock (hstbWather)
             {
-                hstbWather.Add(e.FullPath, e);
+                if (!hstbWather.ContainsKey(e.FullPath))
+                {
+                    hstbWather.Add(e.FullPath, e);
+                }
             }
             WatcherProcess watcherProcess = new WatcherProcess(sender, e);
             watcherProcess.OnCompleted += new Completed(WatcherProcess_OnCompleted);
@@ -110,7 +116,10 @@ namespace WatcherHelper
         {
             lock (hstbWather)
             {
-                hstbWather.Add(e.FullPath, e);
+                if (!hstbWather.ContainsKey(e.FullPath))
+                {
+                    hstbWather.Add(e.FullPath, e);
+                }
             }
             WatcherProcess watcherProcess = new WatcherProcess(sender, e);
             watcherProcess.OnCompleted += new Completed(WatcherProcess_OnCompleted);
@@ -140,7 +149,10 @@ namespace WatcherHelper
 
             lock (hstbWather)
             {
-                hstbWather.Add(e.FullPath, e);
+                if (!hstbWather.ContainsKey(e.FullPath))
+                {
+                    hstbWather.Add(e.FullPath, e);
+                }
             }
             WatcherProcess watcherProcess = new WatcherProcess(sender, e);
             watcherProcess.OnCompleted += new Completed(WatcherProcess_OnCompleted);
