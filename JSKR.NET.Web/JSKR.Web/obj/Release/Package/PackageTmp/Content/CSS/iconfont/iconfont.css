@@ -1,21 +1,18 @@
 @font-face {
   font-family: 'iconfont';
-  src: url('//at.alicdn.com/t/font_1468767944_1437433.eot'); /* IE9*/
-  src: url('//at.alicdn.com/t/font_1468767944_1437433.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('//at.alicdn.com/t/font_1468767944_1437433.woff') format('woff'), /* chrome、firefox */
-  url('//at.alicdn.com/t/font_1468767944_1437433.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
-  url('//at.alicdn.com/t/font_1468767944_1437433.svg#iconfont') format('svg'); /* iOS 4.1- */
+  src: url('iconfont.eot');
+  src: url('iconfont.eot?#iefix') format('embedded-opentype'),
+  url('iconfont.woff') format('woff'),
+  url('iconfont.ttf') format('truetype'),
+  url('iconfont.svg#iconfont') format('svg');
 }
                     
                               
                     
-
-.iconfont {
+.iconfont{
   font-family:"iconfont" !important;
-  font-size:16px;
-  font-style:normal;
+  font-size:16px;font-style:normal;
   -webkit-font-smoothing: antialiased;
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale;
 }
- 
