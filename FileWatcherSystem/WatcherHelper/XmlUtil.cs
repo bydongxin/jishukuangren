@@ -28,16 +28,15 @@ namespace WatcherHelper
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.StackTrace);
+
                 return null;
             }
         }
-
         /// <summary>
         /// 反序列化
         /// </summary>
         /// <param name="type"></param>
-        /// <param name="stream"></param>
+        /// <param name="xml"></param>
         /// <returns></returns>
         public static object Deserialize(Type type, Stream stream)
         {
@@ -57,13 +56,22 @@ namespace WatcherHelper
         {
             MemoryStream Stream = new MemoryStream();
             XmlSerializer xml = new XmlSerializer(type);
-            //序列化对象
-            xml.Serialize(Stream, obj);
+            try
+            {
+                //序列化对象
+                xml.Serialize(Stream, obj);
+            }
+            catch (InvalidOperationException)
+            {
+                throw;
+            }
             Stream.Position = 0;
             StreamReader sr = new StreamReader(Stream);
             string str = sr.ReadToEnd();
+
             sr.Dispose();
             Stream.Dispose();
+
             return str;
         }
 

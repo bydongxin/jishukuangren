@@ -15,14 +15,15 @@ namespace WatcherHelper
     /// </summary>
     public class WatcherConfigHelper
     {
-        private static readonly WatcherPathConfig WatcherModelList;
+        public static readonly List<WatcherPathConfig> WatcherModelList;
 
         static WatcherConfigHelper()
         {
             string xmlStr = File.ReadAllText(@"WatcherPathConfig.xml");
             //加载xml到集合中
-            WatcherModelList = XmlUtil.Deserialize(typeof(WatcherPathConfig), xmlStr) as WatcherPathConfig;
+            WatcherModelList = XmlUtil.Deserialize(typeof(List<WatcherPathConfig>), xmlStr) as List<WatcherPathConfig>;
         }
+
         /// <summary>
         /// 根据站点路径获取同步路径
         /// </summary>
@@ -31,10 +32,11 @@ namespace WatcherHelper
 
         public static string GetSyncPathByWatcherPath(string watcherPath)
         {
-            WatcherPathConfig mdl = WatcherModelList.FirstOrDefault(i => i..Contains(watcherPath));
+            WatcherPathConfig mdl = WatcherModelList.FirstOrDefault(i => watcherPath.StartsWith(i.WatcherPath));
             if (mdl != null)
             {
-                return mdl.SyncPath;
+                //+1是因为Path.Combine 拼接的路径不能包含\\
+                return Path.Combine(mdl.SyncPath, watcherPath.Substring(mdl.WatcherPath.Length + 1));
             }
             return "";
         }
@@ -69,6 +71,18 @@ namespace WatcherHelper
                 return mdl.WebConfigPath;
             }
             return "";
+        }
+
+        public static Hashtable AddHashtable(FileSystemEventArgs e, Hashtable hashtable)
+        {
+            if (!hashtable.ContainsKey(e.FullPath))
+            {
+                if (!e.FullPath.EndsWith("~") && Path.GetExtension(e.FullPath).ToUpper() != ".TMP")
+                {
+                    hashtable.Add(e.FullPath, e);
+                }
+            }
+            return hashtable;
         }
     }
 }

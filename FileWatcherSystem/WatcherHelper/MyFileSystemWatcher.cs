@@ -75,10 +75,7 @@ namespace WatcherHelper
         {
             lock (hstbWather)
             {
-                if (!hstbWather.ContainsKey(e.FullPath))
-                {
-                    hstbWather.Add(e.FullPath, e);
-                }
+                WatcherConfigHelper.AddHashtable(e,hstbWather);
             }
 
             WatcherProcess watcherProcess = new WatcherProcess(sender, e);
@@ -98,10 +95,7 @@ namespace WatcherHelper
         {
             lock (hstbWather)
             {
-                if (!hstbWather.ContainsKey(e.FullPath))
-                {
-                    hstbWather.Add(e.FullPath, e);
-                }
+                WatcherConfigHelper.AddHashtable(e, hstbWather);
             }
             WatcherProcess watcherProcess = new WatcherProcess(sender, e);
             watcherProcess.OnCompleted += WatcherProcess_OnCompleted;
@@ -119,10 +113,7 @@ namespace WatcherHelper
         {
             lock (hstbWather)
             {
-                if (!hstbWather.ContainsKey(e.FullPath))
-                {
-                    hstbWather.Add(e.FullPath, e);
-                }
+                WatcherConfigHelper.AddHashtable(e, hstbWather);
             }
             WatcherProcess watcherProcess = new WatcherProcess(sender, e);
             watcherProcess.OnCompleted += WatcherProcess_OnCompleted;
@@ -152,10 +143,7 @@ namespace WatcherHelper
 
             lock (hstbWather)
             {
-                if (!hstbWather.ContainsKey(e.FullPath))
-                {
-                    hstbWather.Add(e.FullPath, e);
-                }
+                WatcherConfigHelper.AddHashtable(e, hstbWather);
             }
             WatcherProcess watcherProcess = new WatcherProcess(sender, e);
             watcherProcess.OnCompleted += WatcherProcess_OnCompleted;

@@ -10,23 +10,10 @@ namespace WatcherHelper
     /// <summary>
     /// 监听类
     /// </summary>
-    public  class WatcherPathConfig
-    {
-        List<WatcherItem> watcherItems = new List<WatcherItem>();
-
-        [XmlElement(ElementName = "WatcherItem")]
-        public List<WatcherItem> Watcher
-        {
-            get { return watcherItems; }
-            set { watcherItems = value; }
-        }
-    }
-
-    public class WatcherItem
-    {
-        /// <summary>
-        /// 监听路径
-        /// </summary>
+    public class WatcherPathConfig
+    { /// <summary>
+      /// 监听路径
+      /// </summary>
         public string WatcherPath { get; set; }
         /// <summary>
         /// 同步路径
@@ -41,4 +28,5 @@ namespace WatcherHelper
         /// </summary>
         public string WebConfigPath { get; set; }
     }
+
 }

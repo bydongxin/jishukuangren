@@ -1,24 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<WatcherPathConfig>
-  <WatcherItem>
+<ArrayOfWatcherPathConfig>
+  <WatcherPathConfig>
+    <WatcherDesc>Biz站点</WatcherDesc>
+    <WatcherPath>D:\test</WatcherPath>
+    <SyncPath>‪D:\test1</SyncPath>
+    <WatcherFilter>*.*</WatcherFilter>
+    <WebConfigPath>‪D:\WebSite\ZHWeb\Biz.config</WebConfigPath>
+  </WatcherPathConfig>
+  <!--<WatcherPathConfig>
     <WatcherDesc>Biz站点</WatcherDesc>
     <WatcherPath>D:\Projects\LiTai\EBS\Code\Sinochem.EBS.Web\Sinochem.EBS.Web.BizSite</WatcherPath>
     <SyncPath>D:\WebSite\BizSite</SyncPath>
-    <WatcherFilter>*</WatcherFilter>
+    <WatcherFilter>*.ashx|*.txt|*.css|*.js|*.png|*.jpg|*.asp|*.dll|*.pdb</WatcherFilter>
     <WebConfigPath>‪D:\WebSite\ZHWeb\Biz.config</WebConfigPath>
-  </WatcherItem>
-  <WatcherItem>
+  </WatcherPathConfig>
+  <WatcherPathConfig>
     <WatcherDesc>Oper站点</WatcherDesc>
     <WatcherPath>D:\Projects\LiTai\EBS\Code\Sinochem.EBS.Web\Sinochem.EBS.Web.OperSite</WatcherPath>
     <SyncPath>D:\WebSite\OperSite</SyncPath>
-    <WatcherFilter>*</WatcherFilter>
+    <WatcherFilter>*.ashx|*.txt|*.css|*.js|*.png|*.jpg|*.asp|*.dll|*.pdb</WatcherFilter>
     <WebConfigPath>‪D:\WebSite\ZHWeb\Oper.config</WebConfigPath>
-  </WatcherItem>
-  <WatcherItem>
+  </WatcherPathConfig>
+  <WatcherPathConfig>
     <WatcherDesc>Info站点</WatcherDesc>
     <WatcherPath>D:\Projects\LiTai\EBS\Code\Sinochem.EBS.Web\Sinochem.EBS.Web.InfoSite</WatcherPath>
     <SyncPath>D:\WebSite\InfoSite</SyncPath>
-    <WatcherFilter>*</WatcherFilter>
+    <WatcherFilter>*.ashx|*.txt|*.css|*.js|*.png|*.jpg|*.asp|*.dll|*.pdb</WatcherFilter>
     <WebConfigPath>‪D:\WebSite\ZHWeb\Info.config</WebConfigPath>
-  </WatcherItem>
-</WatcherPathConfig>
+  </WatcherPathConfig>-->
+</ArrayOfWatcherPathConfig>
+

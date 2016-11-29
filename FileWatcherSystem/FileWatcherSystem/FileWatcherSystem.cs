@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Security.AccessControl;
 using System.Text;
 using System.Threading;
@@ -19,6 +20,8 @@ namespace FileWatcherSystem
     public partial class FileWatcherSystem : Form
     {
 
+        ///这里在窗体上没有拖拽一个NotifyIcon控件，而是在这里定义了一个变量
+        private NotifyIcon notifyIcon = null;
         public FileWatcherSystem()
         {
             InitializeComponent();
@@ -26,14 +29,25 @@ namespace FileWatcherSystem
 
         private void FileWatcherSystem_Load(object sender, EventArgs e)
         {
-            WatcherConfigHelper helper = new WatcherConfigHelper();
-            //MyFileSystemWatcher myWather = new MyFileSystemWatcher("", "", "");
-            //myWather.OnChanged += OnChanged;
-            //myWather.OnCreated += OnCreated;
-            //myWather.OnRenamed += OnRenamed;
-            //myWather.OnDeleted += OnDeleted;
-            //myWather.Start();
+            Run();
+            //调用初始化托盘显示函数  
+           // InitialTray();
+
         }
+
+        private void Run()
+        {
+            foreach (var config in WatcherConfigHelper.WatcherModelList)
+            {
+                MyFileSystemWatcher myWather = new MyFileSystemWatcher(config.WatcherPath, config.SyncPath, config.WatcherFilter);
+                myWather.OnChanged += OnChanged;
+                myWather.OnCreated += OnCreated;
+                myWather.OnRenamed += OnRenamed;
+                myWather.OnDeleted += OnDeleted;
+                myWather.Start();
+            }
+        }
+
         private static void OnCreated(object source, FileSystemEventArgs e)
         {
             SyncFile(e);
@@ -66,6 +80,10 @@ namespace FileWatcherSystem
         private static void SyncFile(FileSystemEventArgs e)
         {
             if (e.Name.Contains("Web.config"))
+            {
+                return;
+            }
+            if (e.FullPath.EndsWith("~"))
             {
                 return;
             }
@@ -125,8 +143,7 @@ namespace FileWatcherSystem
                     DEFAULT:
                     try
                     {
-
-                        string path = e.FullPath;
+                        string path = UpdateTempPath(e.FullPath);
                         if (File.Exists(path))
                         {
                             string watcherPath = path;
@@ -143,7 +160,7 @@ namespace FileWatcherSystem
                             }
                         }
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
                         Thread.Sleep(1000);
                         goto DEFAULT;
@@ -184,5 +201,97 @@ namespace FileWatcherSystem
         }
 
 
+        //处理TFS中修改后产生的TMP后缀文件
+        public static string UpdateTempPath(string path)
+        {
+            string extension = Path.GetExtension(path);
+            if (extension != null && extension.ToUpper() == ".TMP")
+            {
+                path = path.Substring(0, path.LastIndexOf('~'));
+            }
+            return path;
+        }
+
+
+        private void InitialTray()
+        {
+            //实例化一个NotifyIcon对象  
+            notifyIcon = new NotifyIcon();
+            //托盘图标气泡显示的内容  
+            notifyIcon.BalloonTipText = @"项目同步工具-EBS前台专用，正在后台运行";
+            //托盘图标显示的内容  
+            notifyIcon.Text = @"项目同步工具-EBS前台专用";
+            //注意：下面的路径可以是绝对路径、相对路径。但是需要注意的是：文件必须是一个.ico格式  
+            notifyIcon.Icon = Resources.J;
+            //true表示在托盘区可见，false表示在托盘区不可见  
+            notifyIcon.Visible = true;
+            //气泡显示的时间（单位是毫秒）  
+            notifyIcon.ShowBalloonTip(2000);
+            notifyIcon.MouseClick += notifyIcon_MouseClick;
+
+            //设置二级菜单  
+            MenuItem setting1 = new MenuItem("二级菜单1");
+            MenuItem setting2 = new MenuItem("二级菜单2");
+            MenuItem setting = new MenuItem("一级菜单", new[] { setting1, setting2 });
+
+            //帮助选项，这里只是“有名无实”在菜单上只是显示，单击没有效果，可以参照下面的“退出菜单”实现单击事件  
+            MenuItem help = new MenuItem("帮助");
+
+            //关于选项  
+            MenuItem about = new MenuItem("关于");
+
+            //退出菜单项  
+            MenuItem exit = new MenuItem("退出");
+            exit.Click += exit_Click;
+
+            ////关联托盘控件  
+            //注释的这一行与下一行的区别就是参数不同，setting这个参数是为了实现二级菜单  
+            MenuItem[] childen = { setting, help, about, exit };
+            notifyIcon.ContextMenu = new ContextMenu(childen);
+
+            //窗体关闭时触发  
+            FormClosing += FileWatcherSystem_FormClosing;
+        }
+
+        /// <summary>  
+        /// 鼠标单击  
+        /// </summary>  
+        /// <param name="sender"></param>  
+        /// <param name="e"></param>  
+        private void notifyIcon_MouseClick(object sender, MouseEventArgs e)
+        {
+            //鼠标左键单击  
+            if (e.Button == MouseButtons.Left)
+            {
+                //如果窗体是可见的，那么鼠标左击托盘区图标后，窗体为不可见  
+                if (Visible)
+                {
+                    Visible = false;
+                }
+                else
+                {
+                    Visible = true;
+                    Activate();
+                }
+            }
+        }
+
+        /// <summary>  
+        /// 退出选项  
+        /// </summary>  
+        /// <param name="sender"></param>  
+        /// <param name="e"></param>  
+        private void exit_Click(object sender, EventArgs e)
+        {
+            //退出程序  
+            Environment.Exit(0);
+        }
+
+        private void FileWatcherSystem_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            //通过这里可以看出，这里的关闭其实不是真正意义上的“关闭”，而是将窗体隐藏，实现一个“伪关闭”  
+            Hide();
+        }
     }
 }
