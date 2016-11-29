@@ -29,9 +29,26 @@ namespace FileWatcherSystem
 
         private void FileWatcherSystem_Load(object sender, EventArgs e)
         {
-            Run();
+
+            try
+            {
+                string o = @"D:\test\新建文本文档 - 副本(2).txt";
+                string n = @"‪D:\test1\新建文本文档 - 副本(2).txt";
+                File.Copy(o,n,true);
+                //FileInfo f = new FileInfo(o);
+                //f.CopyTo(n, true);
+            }
+            catch (NotSupportedException ex)
+            {
+                
+                throw ex;
+            }
+           
+            //
+            //
+            //Run();
             //调用初始化托盘显示函数  
-           // InitialTray();
+            // InitialTray();
 
         }
 
@@ -150,6 +167,7 @@ namespace FileWatcherSystem
                             string syncPath = path.Replace(watcherPath, WatcherConfigHelper.GetSyncPathByWatcherPath(watcherPath));
                             FileInfo changeFile = new FileInfo(watcherPath);
                             changeFile.CopyTo(syncPath, true);
+
                         }
                         else if (Directory.Exists(path))
                         {

@@ -77,10 +77,7 @@ namespace WatcherHelper
         {
             if (!hashtable.ContainsKey(e.FullPath))
             {
-                if (!e.FullPath.EndsWith("~") && Path.GetExtension(e.FullPath).ToUpper() != ".TMP")
-                {
-                    hashtable.Add(e.FullPath, e);
-                }
+                hashtable.Add(e.FullPath, e);
             }
             return hashtable;
         }
