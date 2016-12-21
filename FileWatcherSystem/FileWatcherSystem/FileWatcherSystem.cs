@@ -29,27 +29,9 @@ namespace FileWatcherSystem
 
         private void FileWatcherSystem_Load(object sender, EventArgs e)
         {
-
-            try
-            {
-                string o = @"D:\test\新建文本文档 - 副本(2).txt";
-                string n = @"‪D:\test1\新建文本文档 - 副本(2).txt";
-                File.Copy(o,n,true);
-                //FileInfo f = new FileInfo(o);
-                //f.CopyTo(n, true);
-            }
-            catch (NotSupportedException ex)
-            {
-                
-                throw ex;
-            }
-           
-            //
-            //
-            //Run();
+            Run();
             //调用初始化托盘显示函数  
-            // InitialTray();
-
+            InitialTray();
         }
 
         private void Run()
@@ -67,26 +49,38 @@ namespace FileWatcherSystem
 
         private static void OnCreated(object source, FileSystemEventArgs e)
         {
-            SyncFile(e);
-            WriteLine(@"新建事件处理逻辑：" + e.FullPath);
+            if (CheckPath(e))
+            {
+                SyncFile(e);
+                WriteLine(@"新建事件处理逻辑：" + e.FullPath);
+            }
         }
 
         private static void OnChanged(object source, FileSystemEventArgs e)
         {
-            SyncFile(e);
-            WriteLine(@"改变事件处理逻辑：" + e.FullPath);
+            if (CheckPath(e))
+            {
+                SyncFile(e);
+                WriteLine(@"改变事件处理逻辑：" + e.FullPath);
+            }
         }
 
         private static void OnDeleted(object source, FileSystemEventArgs e)
         {
-            SyncFile(e);
-            WriteLine(@"删除事件处理逻辑：" + e.FullPath);
+            if (CheckPath(e))
+            {
+                SyncFile(e);
+                WriteLine(@"删除事件处理逻辑：" + e.FullPath);
+            }
         }
 
         private static void OnRenamed(object source, RenamedEventArgs e)
         {
-            SyncFile(e);
-            WriteLine(@"重命名事件处理逻辑：" + e.FullPath);
+            if (CheckPath(e))
+            {
+                SyncFile(e);
+                WriteLine(@"重命名事件处理逻辑：" + e.FullPath);
+            }
         }
 
 
@@ -96,14 +90,7 @@ namespace FileWatcherSystem
         /// <param name="e"></param>
         private static void SyncFile(FileSystemEventArgs e)
         {
-            if (e.Name.Contains("Web.config"))
-            {
-                return;
-            }
-            if (e.FullPath.EndsWith("~"))
-            {
-                return;
-            }
+
             switch (e.ChangeType)
             {
                 case WatcherChangeTypes.Renamed:
@@ -147,7 +134,7 @@ namespace FileWatcherSystem
                 case WatcherChangeTypes.Deleted:
                     string fullPath = e.FullPath;
                     string targetDeletePath = fullPath.Replace(fullPath, WatcherConfigHelper.GetSyncPathByWatcherPath(fullPath));
-                    if (File.Exists(targetDeletePath))
+                    if (!File.Exists(fullPath) && File.Exists(targetDeletePath))
                     {
                         File.Delete(targetDeletePath);
                     }
@@ -160,7 +147,7 @@ namespace FileWatcherSystem
                     DEFAULT:
                     try
                     {
-                        string path = UpdateTempPath(e.FullPath);
+                        string path = e.FullPath;
                         if (File.Exists(path))
                         {
                             string watcherPath = path;
@@ -187,6 +174,20 @@ namespace FileWatcherSystem
                     break;
             }
 
+        }
+
+
+        private static bool CheckPath(FileSystemEventArgs e)
+        {
+            if (e.Name.Contains("Web.config"))
+            {
+                return false;
+            }
+            if (e.FullPath.EndsWith("~") || e.FullPath.EndsWith(".designer.cs") || e.FullPath.EndsWith(".TMP"))
+            {
+                return false;
+            }
+            return true;
         }
 
 
@@ -218,17 +219,6 @@ namespace FileWatcherSystem
             }
         }
 
-
-        //处理TFS中修改后产生的TMP后缀文件
-        public static string UpdateTempPath(string path)
-        {
-            string extension = Path.GetExtension(path);
-            if (extension != null && extension.ToUpper() == ".TMP")
-            {
-                path = path.Substring(0, path.LastIndexOf('~'));
-            }
-            return path;
-        }
 
 
         private void InitialTray()

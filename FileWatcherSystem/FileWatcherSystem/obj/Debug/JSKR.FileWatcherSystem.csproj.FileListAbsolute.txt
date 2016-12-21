@@ -9,9 +9,8 @@ D:\Projects\FileWatcherSystem\FileWatcherSystem\obj\Debug\FileWatcherSystem.Prop
 D:\Projects\FileWatcherSystem\FileWatcherSystem\obj\Debug\JSKR.FileWatcherSystem.csproj.GenerateResource.Cache
 D:\Projects\FileWatcherSystem\FileWatcherSystem\obj\Debug\FileWatcherSystem.exe
 D:\Projects\FileWatcherSystem\FileWatcherSystem\obj\Debug\FileWatcherSystem.pdb
+D:\jishukuangren\FileWatcherSystem\FileWatcherSystem\bin\Debug\WatcherPathConfig.xml
 D:\jishukuangren\FileWatcherSystem\FileWatcherSystem\bin\Debug\FileWatcherSystem.exe.config
-D:\jishukuangren\FileWatcherSystem\FileWatcherSystem\obj\Debug\FileWatcherSystem.exe
-D:\jishukuangren\FileWatcherSystem\FileWatcherSystem\obj\Debug\FileWatcherSystem.pdb
 D:\jishukuangren\FileWatcherSystem\FileWatcherSystem\bin\Debug\FileWatcherSystem.exe
 D:\jishukuangren\FileWatcherSystem\FileWatcherSystem\bin\Debug\FileWatcherSystem.pdb
 D:\jishukuangren\FileWatcherSystem\FileWatcherSystem\bin\Debug\WatcherHelper.dll
@@ -20,4 +19,5 @@ D:\jishukuangren\FileWatcherSystem\FileWatcherSystem\obj\Debug\JSKR.FileWatcherS
 D:\jishukuangren\FileWatcherSystem\FileWatcherSystem\obj\Debug\FileWatcherSystem.FileWatcherSystem.resources
 D:\jishukuangren\FileWatcherSystem\FileWatcherSystem\obj\Debug\FileWatcherSystem.Properties.Resources.resources
 D:\jishukuangren\FileWatcherSystem\FileWatcherSystem\obj\Debug\JSKR.FileWatcherSystem.csproj.GenerateResource.Cache
-D:\jishukuangren\FileWatcherSystem\FileWatcherSystem\bin\Debug\WatcherPathConfig.xml
+D:\jishukuangren\FileWatcherSystem\FileWatcherSystem\obj\Debug\FileWatcherSystem.exe
+D:\jishukuangren\FileWatcherSystem\FileWatcherSystem\obj\Debug\FileWatcherSystem.pdb
